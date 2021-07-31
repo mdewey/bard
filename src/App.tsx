@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from 'react';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import './App.scss';
+import reducerFunction from './reducer'
+import { AppContextInterface, AppState, MusicContext } from './context/useMusicContext';
+import Home from './pages/Home';
+import { Layout } from './containers/Layout';
+
 
 function App() {
+  const [state, dispatch] = useReducer(reducerFunction, {} as AppState)
+
+  const ctxt = { state, dispatch } as AppContextInterface
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <MusicContext.Provider value={ctxt}>
+      <Layout>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </Router>
+      </Layout>
+    </MusicContext.Provider>
+  )
 }
 
 export default App;

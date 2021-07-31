@@ -1,0 +1,10 @@
+.selected-scale {
+  ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    li{
+      margin:1rem;
+    }
+  }
+}
