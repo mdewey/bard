@@ -8,7 +8,7 @@ import { Layout } from './containers/Layout';
 
 
 function App() {
-  const [state, dispatch] = useReducer(reducerFunction, {} as AppState)
+  const [state, dispatch] = useReducer(reducerFunction, { scales: [] as Array<string> } as AppState)
 
   const ctxt = { state, dispatch } as AppContextInterface
 

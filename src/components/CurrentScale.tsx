@@ -5,11 +5,13 @@ import { Button } from '@material-ui/core';
 import { useCallback } from 'react';
 
 const CurrentScale = () => {
-  const { state } = useMusicContext();
+  const { state, dispatch } = useMusicContext();
   const { selectedScale } = state
+
   const onClick = useCallback(() => {
     console.log(selectedScale);
-  }, [selectedScale]);
+    dispatch({ type: 'SCALE_ADDED_TO_SONG', name: `${selectedScale.root} ${selectedScale.name}` });
+  }, [selectedScale, dispatch]);
 
   if (!selectedScale) {
     return (

@@ -5,7 +5,8 @@ export interface AppState {
   selectedScale: {
     name: string,
     root: string
-  }
+  },
+  scales: Array<string>
 }
 
 export interface AppContextInterface {
